@@ -3,7 +3,7 @@ format.blob <- function(x, ...) {
   if (length(x) == 0)
     return(character())
 
-  ifelse(is.na(x), "<NA>", paste0("blob[", blob_size(x, ...) , "]"))
+  ifelse(is.na(x), "<NA>", paste0("blob[", blob_size(x, ...), "]"))
 }
 
 #' @export
@@ -15,35 +15,31 @@ print.blob <- function(x, ...) {
   }
 }
 
-#' @export
-#' @importFrom tibble type_sum
+# Dynamically exported, see zzz.R
 type_sum.blob <- function(x) {
   "blob"
 }
 
-#' @export
-#' @importFrom tibble obj_sum
+# Dynamically exported, see zzz.R
 obj_sum.blob <- function(x) {
   format(x, trim = FALSE)
 }
 
-#' @export
-#' @importFrom tibble is_vector_s3
+# Dynamically exported, see zzz.R
 is_vector_s3.blob <- function(x) TRUE
 
 blob_size <- function(x, digits = 3, trim = TRUE, ...) {
   x <- vapply(x, length, numeric(1))
+  prettyunits::pretty_bytes(x)
+}
 
-  units <- c("kb", "Mb", "Gb", "Tb")
-  power <- min(floor(log(abs(x), 1000)), length(units))
-  if (power < 1) {
-    unit <- "B"
-  } else {
-    unit <- units[[power]]
-    x <- x / (1024 ^ power)
-  }
+# Dynamically exported, see zzz.R
+pillar_shaft.blob <- function(x, ...) {
+  out <- ifelse(
+    is.na(x),
+    NA_character_,
+    paste0(pillar::style_subtle("<raw "), blob_size(x, ...), pillar::style_subtle(">"))
+  )
 
-  x1 <- signif(x, digits = digits %||% 3)
-  x2 <- format(x1, big.mark = ",", scientific = FALSE, trim = trim)
-  paste0(x2, " ", unit)
+  pillar::new_pillar_shaft_simple(out, align = "right")
 }
