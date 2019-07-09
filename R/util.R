@@ -11,4 +11,6 @@ is_raw_list <- function(x) {
   TRUE
 }
 
-`%||%` <- function(x, y) if (is.null(x)) y else x
+as_single_raw <- function(x) {
+  if (is.na(x)) NULL else as.raw(x)
+}
