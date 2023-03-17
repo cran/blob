@@ -1,10 +1,10 @@
 Package: blob
 Title: A Simple S3 Class for Representing Vectors of Binary Data
         ('BLOBS')
-Version: 1.2.3
+Version: 1.2.4
 Authors@R: c(
     person("Hadley", "Wickham", role = "aut"),
-    person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = "cre"),
+    person("Kirill", "Müller", , "kirill@cynkra.com", role = "cre"),
     person("RStudio", role = c("cph", "fnd"))
   )
 Description: R's raw vector is useful for storing a single binary object.
@@ -20,12 +20,12 @@ Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 NeedsCompilation: no
-Packaged: 2022-04-10 05:32:26 UTC; kirill
+Packaged: 2023-03-17 09:42:50 UTC; kirill
 Author: Hadley Wickham [aut],
   Kirill Müller [cre],
   RStudio [cph, fnd]
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
+Maintainer: Kirill Müller <kirill@cynkra.com>
 Repository: CRAN
-Date/Publication: 2022-04-10 06:22:28 UTC
+Date/Publication: 2023-03-17 12:00:06 UTC
